@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bimbingan dan Konseling | Kelompok 5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Kelompok bisa upload logo.png ke folder assets/ lalu uncomment img line below -->
+        <!-- <img src="assets/logo.png" alt="Logo BK" class="logo" /> -->
+        <h1>Bimbingan dan Konseling</h1>
+        <p class="subtitle">Kelompok 5 — Universitas Sultan Ageng Tirtayasa</p>
+      </div>
+      <nav class="main-nav">
+        <a href="#home">Beranda</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="container section home">
+      <h2>Selamat Datang</h2>
+      <p>
+        Website layanan <strong>Bimbingan dan Konseling</strong> untuk siswa SMA.
+        Dibuat oleh <em>Kelompok 5</em> (Tiwi, Syauqi, Nabilla, Muhammad Fakhri, Zhafira).
+      </p>
+    </section>
+
+    <section id="layanan" class="container section">
+      <h2>Layanan Kami</h2>
+      <p>Kami menyediakan layanan: konseling akademik, masalah pribadi, konseling karier, dan rujukan bila diperlukan.</p>
+
+      <div id="poster-list" class="poster-list" aria-live="polite">
+        <!-- Poster akan ditampilkan di sini (dari admin upload / localStorage) -->
+      </div>
+
+      <p class="hint">Untuk menambahkan poster: masuk ke menu <strong>Admin</strong> → Upload Poster (fitur drag & drop).</p>
+    </section>
+
+    <section id="kontak" class="container section">
+      <h2>Kontak</h2>
+      <div class="contact-cards">
+        <div class="card">
+          <h3>Email Layanan</h3>
+          <p id="contact-email">Belum diatur</p>
+        </div>
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p id="contact-wa">Belum diatur</p>
+        </div>
+        <div class="card">
+          <h3>Instagram</h3>
+          <p id="contact-ig">Belum diatur</p>
+        </div>
+      </div>
+
+      <h3>Kirim Pesan Konseling</h3>
+      <form id="contact-form" class="contact-form">
+        <input type="text" id="sender-name" placeholder="Nama lengkap" required />
+        <input type="text" id="sender-class" placeholder="Kelas (contoh: XII IPA 1)" />
+        <textarea id="sender-message" placeholder="Tuliskan pesan/permintaan konseling..." required></textarea>
+        <button type="submit">Kirim Pesan</button>
+        <p class="form-hint">Catatan: saat ini form menyimpan pesan di browser (demo). Untuk menerima via email, ikuti panduan deploy di README.</p>
+      </form>
+
+      <div id="message-out" class="message-out"></div>
+    </section>
+
+    <section id="admin" class="container section admin-section">
+      <h2>Admin — Pengelola Kelompok 5</h2>
+      <p>Area admin sederhana: simpan pengaturan kontak, upload poster (drag & drop), dan hapus poster.</p>
+
+      <div class="admin-grid">
+        <div class="card admin-card config-card">
+          <h3>Konfigurasi Kontak</h3>
+          <label>Email layanan <input id="cfg-email" placeholder="bkdigitalsma@example.com" /></label>
+          <label>WhatsApp (nomor internasional tanpa +, contoh: 62812...) <input id="cfg-wa" placeholder="62812..." /></label>
+          <label>Instagram (username) <input id="cfg-ig" placeholder="bkdigitalsma" /></label>
+          <button id="save-config">Simpan Konfigurasi</button>
+          <p class="small">Konfigurasi disimpan di browser (localStorage). Setelah deploy ke Netlify/GitHub, kalian bisa mengganti langsung di file <code>config.js</code> atau hubungkan form ke layanan email (lihat README).</p>
+        </div>
+
+        <div class="card admin-card upload-card">
+          <h3>Upload Poster (Drag & Drop)</h3>
+          <div id="dropzone" class="dropzone">Tarik dan lepas gambar di sini, atau klik untuk pilih file</div>
+          <input id="file-input" type="file" accept="image/*" multiple style="display:none" />
+          <div id="upload-list" class="upload-list"></div>
+        </div>
+      </div>
+
+      <div class="card admin-card poster-management">
+        <h3>Manajemen Poster</h3>
+        <div id="admin-poster-list"></div>
+        <button id="clear-posters" class="danger">Hapus Semua Poster</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bimbingan dan Konseling | Kelompok 5 — Universitas Sultan Ageng Tirtayasa</p>
+    </div>
+  </footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
